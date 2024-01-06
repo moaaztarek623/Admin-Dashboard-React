@@ -19,7 +19,7 @@ body,
     -moz-transition: 0.3s;
     -ms-transition: 0.3s;
     -o-transition: 0.3s;
-    height: 100%;
+    height: auto;
     width: 100%;
     font-family: "Source Sans Pro", sans-serif;
 }
@@ -40,5 +40,45 @@ body,
 
     &:hover {
         background-color: #555;
+    }
+}
+
+.ps-menu-button {
+    &:hover {
+        .ps-menu-icon {
+            animation: tilt-shaking 0.4s linear;
+            -webkit-animation: tilt-shaking 0.4s linear;
+        }
+    }
+}
+
+//animatin shake
+@keyframes tilt-shaking {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(8deg);
+        -webkit-transform: rotate(8deg);
+        -moz-transform: rotate(8deg);
+        -ms-transform: rotate(8deg);
+        -o-transform: rotate(8deg);
+    }
+
+    50% {
+        transform: rotate(0eg);
+    }
+
+    75% {
+        transform: rotate(-8deg);
+        -webkit-transform: rotate(-8deg);
+        -moz-transform: rotate(-8deg);
+        -ms-transform: rotate(-8deg);
+        -o-transform: rotate(-8deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
     }
 }

@@ -19,22 +19,22 @@ const NavBar = () => {
     {/* SEARCH_BAR */}
       <Box display={'flex'} backgroundColor={colors.primary[400]} borderRadius={'3px'}>
         <InputBase sx={{ ml: 2, flex: 1 }} placeholder='Search' />
-        <IconButton type="button" sx={{ p: 1 }}>
+        <IconButton type="button" size='large'>
           <SearchIcon />
         </IconButton>
       </Box>
     {/* ICONS_BOX */}
       <Box display="flex">
-        <IconButton onClick={colorMode.toggleColorMode}>
+        <IconButton onClick={colorMode.toggleColorMode} size="large">
           {theme.palette.mode === "dark" ? (<LightModeOutlinedIcon />) : (<DarkModeOutlinedIcon />)}
         </IconButton>
-        <IconButton>
+        <IconButton size="large">
           <NotificationsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton size="large">
           <SettingsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton size="large">
           <PersonOutlinedIcon />
         </IconButton>
       </Box>
