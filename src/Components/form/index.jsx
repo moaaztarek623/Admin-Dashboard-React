@@ -6,10 +6,10 @@ import {
   Button,
   Snackbar,
   TextField,
-  useMediaQuery
 } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { useMediaQuery } from "react-responsive";
 
 const initialValues = {
   firstName: "",
@@ -35,8 +35,9 @@ const checkOutSchema = yup.object().shape({
 });
 
 const Form = () => {
-  const isNoneMobile = useMediaQuery("(min-width:991px)");
-
+  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1178px)" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
   const onSubmit = values => {
     console.log(values);
   };
@@ -74,11 +75,7 @@ const Form = () => {
             <Box
               display="grid"
               className="gap-7"
-              gridTemplateColumns={
-                isNoneMobile
-                  ? "repeat(4, minmax(0, 1fr))"
-                  : "repeat(2, minmax(0, 1fr))"
-              }
+              gridTemplateColumns={`repeat(${4}, 1fr)`}
             >
               <TextField
                 fullWidth
@@ -91,7 +88,7 @@ const Form = () => {
                 name="firstName"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: `span ${isSmallScreen ? 4 : 2}` }}
               />
               <TextField
                 fullWidth
@@ -104,7 +101,7 @@ const Form = () => {
                 name="lastName"
                 error={!!touched.lastName && !!errors.lastName}
                 helperText={touched.lastName && errors.lastName}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: `span ${isSmallScreen ? 4 : 2}` }}
               />
               <TextField
                 fullWidth

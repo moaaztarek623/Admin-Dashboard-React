@@ -7,7 +7,7 @@ const StatBox = ({ title, subtitle, icon, progress, increase }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-    <Box width="100%" display="flex" className="p-8 rounded-md flex-col gap-5" sx={{background: colors.primary[400]}}>
+    <Box width="100%" display="flex" className="p-8 py-5 rounded-md flex-col gap-5" sx={{background: colors.primary[400]}}>
       <Box display="flex" justifyContent="space-between">
         <Box display="flex" justifyContent={"space-between"} className="gap-1" flexDirection={"column"}>
           {icon}

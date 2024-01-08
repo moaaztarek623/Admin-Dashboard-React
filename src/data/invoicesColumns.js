@@ -1,28 +1,34 @@
 import { Typography } from "@mui/material";
+import { useMediaQuery } from "react-responsive";
 
-export const invoicesColumns = colors => {
+export const InvoicesColumns = (colors) => {
+  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1178px)" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "ID", width: isTabletOrMobile ? 50 : 80 },
     {
       field: "name",
       headerName: "Name",
-      flex: 1,
+      flex: isTabletOrMobile ? 0 : 1,
+      minWidth: 150,
       cellClassName: "name-column--cell"
     },
     {
       field: "phone",
       headerName: "Phone Number",
-      flex: 1
+      flex: isTabletOrMobile ? 0 : 1,
     },
     {
       field: "email",
       headerName: "Email",
-      flex: 1
+      flex: 1,
+      minWidth: 200,
     },
     {
       field: "cost",
       headerName: "Cost",
-      flex: 1,
+      flex: isTabletOrMobile ? 0 : 1,
       renderCell: params =>
         <Typography color={colors.greenAccent[500]}>
           ${params.row.cost}
@@ -31,7 +37,7 @@ export const invoicesColumns = colors => {
     {
       field: "date",
       headerName: "Date",
-      flex: 1
+      flex: isTabletOrMobile ? 0 : 1,
     }
   ];
 

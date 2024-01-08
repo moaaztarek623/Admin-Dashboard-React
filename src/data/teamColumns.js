@@ -2,14 +2,21 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import { Box, Typography } from '@mui/material';
-export const teamColumns = (colors) => {
+import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
+
+export const TeamColumns = (colors) => {
+  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1178px)" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
     const columns = [
-        { field: "id", headerName: "ID" },
+        { field: "id", headerName: "ID", width: isTabletOrMobile ? 50 : 80 },
         {
           field: "name",
           headerName: "Name",
-          flex: 1,
           cellClassName: "name-column--cell",
+          flex: isTabletOrMobile ? 0 : 1,
+          minWidth: 150,
         },
         {
           field: "age",
@@ -17,25 +24,28 @@ export const teamColumns = (colors) => {
           type: "number",
           headerAlign: "left",
           align: "left",
+          width: isTabletOrMobile ? 50 : 80
         },
         {
           field: "phone",
           headerName: "Phone Number",
-          flex: 1,
+          flex: isTabletOrMobile ? 0 : 1,
         },
         {
           field: "email",
           headerName: "Email",
           flex: 1,
+          minWidth: 200,
         },
         {
           field: "accessLevel",
           headerName: "Access Level",
           flex: 1,
+          minWidth: 150,
           renderCell: ({ row: { access } }) => {
             return (
               <Box
-                width="60%"
+                width={`${isTabletOrMobile ? "100" : "65"}%`}
                 m="0 auto"
                 className="p-1.5 flex items-center gap-1 justify-between"
                 backgroundColor={

@@ -4,12 +4,12 @@ import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import {mockBarData} from '../data/MockData'
 
-const BarChart = ({ isDashboard = false }) => {
+const BarChart = ({ isDashboard = false, isSmallScreen }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
     <ResponsiveBar
-      groupMode="grouped"
+      groupMode={`${isSmallScreen ? "stacked" : "grouped"}`}
       data={mockBarData}
       theme={{
         // added

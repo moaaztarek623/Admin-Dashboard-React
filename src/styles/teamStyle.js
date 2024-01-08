@@ -42,6 +42,9 @@ export const teamStyle = (colors) => {
     "& .css-128fb87-MuiDataGrid-toolbarContainer button": {
       color: `${colors.grey[100]} !important`,
     },
+    "& .MuiDataGrid-root .MuiDataGrid-cell":{
+      whiteSpace: 'normal !important',
+    }
  }
  return dataStyle
 }

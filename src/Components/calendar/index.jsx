@@ -17,6 +17,7 @@ import {
 import { tokens } from "../../theme";
 import { AlertDialog, FormDialog } from "../../global/Dialog";
 import { formatDate } from "@fullcalendar/core";
+import { useMediaQuery } from "react-responsive";
 
 const Calendar = () => {
   const theme = useTheme();
@@ -29,6 +30,7 @@ const Calendar = () => {
   const [openAlert, setOpenAlert] = React.useState(false);
   const [alertDialogDis, setAlertDialogDis] = React.useState("");
   const [acceptDelete, setAcceptDelete] = React.useState(false);
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 991px)" });
   let currentDate = new Date().toJSON().slice(0, 10);
   console.log(theme.palette.mode);
 
@@ -89,7 +91,7 @@ const Calendar = () => {
         title={"Calendar"}
         subtitle={"Full Calendar Interactive Page"}
       />
-      <Box display="flex" justifyContent="space-between" className="gap-4">
+      <Box display="flex" justifyContent="space-between" className={`gap-4 ${isSmallScreen ? "flex-col" : ""}`}>
         {/* CALENDAR SIDEBAR */}
         <Box
           backgroundColor={colors.primary[400]}
@@ -134,6 +136,9 @@ const Calendar = () => {
             ":hover": {
               color: `${theme.palette.mode === "dark" ? colors.primary[700] : null } !important`,
             }
+          },
+          "& .fc-header-toolbar.fc-toolbar.fc-toolbar-ltr":{
+            flexDirection: `${isSmallScreen ? 'column' : 'row'} !important`,
           },
         }}>
           <FullCalendar

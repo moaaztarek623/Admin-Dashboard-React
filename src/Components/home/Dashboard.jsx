@@ -11,12 +11,17 @@ import TrafficIcon from "@mui/icons-material/Traffic";
 import LineChart from "../../global/LineChart";
 import { mockTransactions } from "../../data/MockData";
 import ProgressCircle from "../../global/ProgressCircle";
-import BarChart from '../../global/BarChart'
-import GeoChart from '../../global/GeoChart'
+import BarChart from "../../global/BarChart";
+import GeoChart from "../../global/GeoChart";
+import { useMediaQuery } from "react-responsive";
 
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1178px)" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
+  const repeatGridColumns = 12;
   return (
     <Box className="m-6">
       {/*SUB_TITLE*/}
@@ -55,9 +60,9 @@ const Dashboard = () => {
       <Box
         mt="20px"
         display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
+        gridTemplateColumns={`repeat(${repeatGridColumns}, 1fr)`}
         gridAutoRows="140px"
-        className="gap-y-8 gap-x-6"
+        className="gap-y-4 gap-x-6"
       >
         {/* !!!: Row (1) */}
         {/*Column 1*/}
@@ -65,7 +70,13 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          gridColumn={"span 3"}
+          gridColumn={`${isTabletOrMobile
+            ? `span ${repeatGridColumns / 2}`
+              ? isSmallScreen
+                ? `span ${repeatGridColumns}`
+                : `span ${repeatGridColumns / 2}`
+              : `span ${repeatGridColumns}`
+            : "span 3"}`}
         >
           <StatBox
             title="31,274"
@@ -84,7 +95,13 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          gridColumn={"span 3"}
+          gridColumn={`${isTabletOrMobile
+            ? `span ${repeatGridColumns / 2}`
+              ? isSmallScreen
+                ? `span ${repeatGridColumns}`
+                : `span ${repeatGridColumns / 2}`
+              : `span ${repeatGridColumns}`
+            : "span 3"}`}
         >
           <StatBox
             title="431,225"
@@ -103,7 +120,13 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          gridColumn={"span 3"}
+          gridColumn={`${isTabletOrMobile
+            ? `span ${repeatGridColumns / 2}`
+              ? isSmallScreen
+                ? `span ${repeatGridColumns}`
+                : `span ${repeatGridColumns / 2}`
+              : `span ${repeatGridColumns}`
+            : "span 3"}`}
         >
           <StatBox
             title="32,441"
@@ -122,7 +145,13 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          gridColumn={"span 3"}
+          gridColumn={`${isTabletOrMobile
+            ? `span ${repeatGridColumns / 2}`
+              ? isSmallScreen
+                ? `span ${repeatGridColumns}`
+                : `span ${repeatGridColumns / 2}`
+              : `span ${repeatGridColumns}`
+            : "span 3"}`}
         >
           <StatBox
             title="1,325,134"
@@ -138,7 +167,7 @@ const Dashboard = () => {
         </Box>
         {/* !!!: Row (2) */}
         <Box
-          gridColumn="span 8"
+          gridColumn={`${isTabletOrMobile ? `span ${repeatGridColumns}` : `span 8`}`}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           className="rounded-md"
@@ -179,7 +208,7 @@ const Dashboard = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn={`span ${isTabletOrMobile ? `${repeatGridColumns / 2}` ? isSmallScreen ? `${repeatGridColumns}` : `${repeatGridColumns / 2}` : `${repeatGridColumns}` : `4`}`}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
@@ -234,7 +263,7 @@ const Dashboard = () => {
         </Box>
         {/* !!!: Row (3) */}
         <Box
-          gridColumn="span 4"
+          gridColumn={`span ${isTabletOrMobile ? `${repeatGridColumns / 2}` ? isSmallScreen ? `${repeatGridColumns}` : `${repeatGridColumns / 2}` : `${repeatGridColumns}` : `4`}`}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           p="30px"
@@ -261,7 +290,7 @@ const Dashboard = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn={`span ${isTabletOrMobile ? `${repeatGridColumns / 2}` ? isSmallScreen ? `${repeatGridColumns}` : `${repeatGridColumns / 2}` : `${repeatGridColumns}` : `4`}`}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           borderRadius={"6px"}
@@ -278,7 +307,7 @@ const Dashboard = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn={`span ${isTabletOrMobile ? `${repeatGridColumns / 2}` ? isSmallScreen ? `${repeatGridColumns}` : `${repeatGridColumns / 2}` : `${repeatGridColumns}` : `4`}`}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           padding="30px"

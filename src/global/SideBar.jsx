@@ -39,8 +39,11 @@ const SideBar = () => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const collapseRef = useRef(null);
   useEffect(() => {
-    setSidebarWidth(document.querySelector('.p-5')?.offsetWidth);
+    setSidebarWidth(document.querySelector('.p-5.py-6.h-auto')?.offsetWidth);
   }, [])
+  useEffect(() => {
+    setSidebarWidth(document.querySelector('.p-5.py-6.h-auto')?.offsetWidth);
+  })
 
   const handleCollapse = () => {
       setTimeout(() => {
@@ -49,17 +52,17 @@ const SideBar = () => {
       setIsCollapsed(!isCollapsed);
   };
   useEffect(() => {
-  if (isTabletOrMobile) {
-    setTimeout(() => {
-      setSidebarWidth(document.querySelector('.p-5')?.offsetWidth)
-    }, 310);
-    setIsCollapsed(true)
-  }else {
-    setTimeout(() => {
-      setSidebarWidth(document.querySelector('.p-5')?.offsetWidth)
-    }, 310);
-    setIsCollapsed(false)
-  }
+    if (isTabletOrMobile) {
+      setTimeout(() => {
+        setSidebarWidth(document.querySelector('.p-5')?.offsetWidth)
+      }, 310);
+      setIsCollapsed(true)
+    }else {
+      setTimeout(() => {
+        setSidebarWidth(document.querySelector('.p-5')?.offsetWidth)
+      }, 310);
+      setIsCollapsed(false)
+    }
   }, [isTabletOrMobile])
   return (
     <Box sx={{
