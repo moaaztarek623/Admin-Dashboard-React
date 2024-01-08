@@ -25,7 +25,7 @@ const Dashboard = () => {
   return (
     <Box className="m-6">
       {/*SUB_TITLE*/}
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box display="flex" justifyContent={`${isSmallScreen ? 'center' : 'space-between'}`} alignItems="center" flexDirection={`${isSmallScreen ? 'column' : 'row'}`}>
         <SubTitle title={"Dashboard"} subtitle={"Welcome to your dashboard"} />
         <Box
           display="flex"

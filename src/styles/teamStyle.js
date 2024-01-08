@@ -24,6 +24,9 @@ export const teamStyle = (colors) => {
     "& .css-1gens70-MuiDataGrid-root .MuiDataGrid-withBorderColor": {
       borderColor: `${colors.primary[500]} !important`
     },
+    "& .css-oqdmz3.MuiDataGrid-withBorderColor":{
+      borderColor: `${colors.primary[500]} !important`
+    },
     "& .css-112ysrj-MuiButtonBase-root-MuiCheckbox-root.Mui-checked": {
       color: `${colors.greenAccent[400]} !important`,
     },
