@@ -74,7 +74,7 @@ const SideBar = () => {
         flexDirection: "column",
         gap: "1.2rem"
       },
-      backgroundColor: `${colors.primary[400]} !important` }} className={`p-5 py-6 h-auto ${isTabletOrMobile ? "!px-2" : ""}`}>
+      backgroundColor: `${colors.primary[400]} !important` }} className={`p-5 py-6 h-auto ${isTabletOrMobile ? "!px-0" : ""}`}>
       <Sidebar collapsed={isCollapsed} backgroundColor={`${colors.primary[400]}`} >
         <Menu iconShape="square" menuItemStyles={{
           button: {

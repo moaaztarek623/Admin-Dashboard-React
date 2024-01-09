@@ -26,7 +26,9 @@ const Dashboard = () => {
     <Box className="m-6">
       {/*SUB_TITLE*/}
       <Box display="flex" justifyContent={`${isSmallScreen ? 'center' : 'space-between'}`} alignItems="center" flexDirection={`${isSmallScreen ? 'column' : 'row'}`}>
-        <SubTitle title={"Dashboard"} subtitle={"Welcome to your dashboard"} />
+        <Box width={`${isSmallScreen ? '100%' : 'auto'}`}>
+          <SubTitle title={"Dashboard"} subtitle={"Welcome to your dashboard"} />
+        </Box>
         <Box
           display="flex"
           justifyContent="flex-end"
@@ -85,7 +87,7 @@ const Dashboard = () => {
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
-            increase={"+15.3"}
+            increase={"+15.3%"}
             progress="0.80"
             subtitle="Email Sent"
           />
@@ -218,7 +220,7 @@ const Dashboard = () => {
             display="flex"
             justifyContent="space-between"
             alignItems="center"
-            borderBottom={`4px solid ${colors.primary[500]}`}
+            borderBottom={`2px solid ${theme.palette.mode === "dark" ? colors.primary[500] : '#fff'}`}
             colors={colors.grey[100]}
             backgroundColor={colors.greenAccent[700]}
             p="15px"
@@ -233,7 +235,7 @@ const Dashboard = () => {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-              borderBottom={`4px solid ${colors.primary[500]}`}
+              borderBottom={`2px solid ${theme.palette.mode === "dark" ? colors.primary[500] : '#fff'}`}
               p="15px"
             >
               <Box>
